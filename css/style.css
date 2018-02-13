@@ -41,6 +41,15 @@ h1 {
   text-transform: lowercase;
 }
 
+.calculator {
+  background-color: #808080;
+  border: none;
+  border-radius: 6px;
+  margin: 0 auto 30px;
+  max-width: 320px;
+  padding: 20px 0;
+}
+
 footer {
   background-color: #404040;
   bottom: 0;
