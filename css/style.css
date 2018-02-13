@@ -76,6 +76,7 @@ h1 {
 button,
 button:hover,
 button:focus {
+  background-color: #0086b3;
   box-shadow: -1px 3px 2px #000;
   border: none;
   border-radius: 4px;
@@ -100,10 +101,6 @@ button:active {
 .number:focus {
   background-color: #fff;
   color: #333;
-}
-
-.operator {
-  background-color: #0086b3;
 }
 
 #backspace {
