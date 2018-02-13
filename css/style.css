@@ -33,3 +33,10 @@ body {
   position: relative;
   text-align: center;
 }
+
+h1 {
+  font: 2.4rem "Oxygen Mono", monospace;
+  font-weight: 400;
+  letter-spacing: 12px;
+  text-transform: lowercase;
+}
