@@ -2,3 +2,34 @@
   font-family: "digital 7 italic";
   src: url(../fonts/digital-7-italic.ttf);
 }
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+a:visited,
+a:active,
+a:focus {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+html {
+  font-size: 10px;
+  height: 100%;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+  font: 14px Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  min-height: 100%;
+  padding: 2% 20px 40px;
+  position: relative;
+  text-align: center;
+}
