@@ -131,3 +131,18 @@ footer a:active,
 footer a:focus {
   color: #83bbc9;
 }
+
+@media only screen and (orientation: landscape) {
+
+  .calculator {
+    max-width: 400px;
+  }
+
+  button,
+  button:hover,
+  button:active,
+  button:focus {
+    height: 40px;
+    width: 80px;
+  }
+}
