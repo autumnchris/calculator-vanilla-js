@@ -9,6 +9,15 @@ My project for the [Build a JavaScript Calculator challenge](https://www.freecod
 2. I can clear the input field with a clear button.
 3. I can keep chaining mathematical operations together until I hit the equal button, and the calculator will tell me the correct output.
 
+## Built With
+* JavaScript
+* CSS
+* HTML
+* [Digital 7 font](https://www.dafont.com/digital-7.font)
+* [Normalize.css](http://necolas.github.io/normalize.css)
+* [Font Awesome](https://fontawesome.com)
+* [Google Fonts](https://fonts.google.com)
+
 ## Demo
 
 View project demo at [https://autumnchris.github.io/calculator](https://autumnchris.github.io/calculator).
