@@ -91,6 +91,18 @@ function togglePosNeg() {
   }
 }
 
+function convertToPercent() {
+  var lastChar = result.charAt(result.length - 1);
+
+  if (!lastChar.match(/\s/)) {
+    result = result.split(' ');
+    result[result.length - 1] /= 100;
+    document.getElementById('screen').value = result[result.length - 1];
+    result = result.join(' ');
+    console.log(result);
+  }
+}
+
 // EVENT LISTENERS
 
 document.querySelectorAll('.number').forEach(function(num) {
