@@ -137,3 +137,7 @@ document.getElementById('pos-neg').addEventListener('click', function() {
 document.getElementById('percentage').addEventListener('click', function() {
   convertToPercent();
 });
+
+document.getElementById('clear').addEventListener('click', function() {
+  clearEntry();
+});
