@@ -11,7 +11,6 @@ function selectNumber(elem) {
   result[result.length - 1] += elem.id;
   document.getElementById('screen').value = result[result.length - 1];
   result = result.join(' ');
-  console.log(result);
 }
 
 function selectOperator(elem) {
@@ -21,7 +20,6 @@ function selectOperator(elem) {
     result = result.substr(0, result.length - 3);
   }
   result += ' ' + elem.id + ' ';
-  console.log(result);
 }
 
 function solveEquation() {
@@ -46,7 +44,6 @@ function solveEquation() {
     }
     result = result.toString();
     document.getElementById('screen').value = result;
-    console.log(result);
   }
 }
 
@@ -63,7 +60,6 @@ function deleteLastInput() {
     }
     document.getElementById('screen').value = result[result.length - 1];
     result = result.join(' ');
-    console.log(result);
   }
 }
 
@@ -83,7 +79,6 @@ function togglePosNeg() {
     }
     document.getElementById('screen').value = result[result.length - 1];
     result = result.join(' ');
-    console.log(result);
   }
 }
 
@@ -94,7 +89,6 @@ function convertToPercent() {
     result[result.length - 1] /= 100;
     document.getElementById('screen').value = result[result.length - 1];
     result = result.join(' ');
-    console.log(result);
   }
 }
 
@@ -113,7 +107,6 @@ function selectDecimal() {
       document.getElementById('screen').value = result[result.length - 1];
     }
     result = result.join(' ');
-    console.log(result);
   }
 }
 
