@@ -46,10 +46,10 @@ function solveEquation() {
       case '/':
         result = num1 / num2;
     }
+    result = result.toString();
+    document.getElementById('screen').value = result;
+    console.log(result);
   }
-  result = result.toString();
-  document.getElementById('screen').value = result;
-  console.log(result);
 }
 
 function deleteLastInput() {
