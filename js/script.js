@@ -117,9 +117,9 @@ function selectDecimal() {
     if (!result[result.length - 1].includes('.')){
       result[result.length - 1] += '.';
       document.getElementById('screen').value = result[result.length - 1];
-      result = result.join(' ');
-      console.log(result);
     }
+    result = result.join(' ');
+    console.log(result);
   }
 }
 
