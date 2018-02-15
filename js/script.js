@@ -87,3 +87,7 @@ document.querySelectorAll('.operator').forEach(function(num) {
 document.getElementById('equals').addEventListener('click', function() {
   solveEquation();
 });
+
+document.getElementById('backspace').addEventListener('click', function() {
+  deleteLastInput();
+});
