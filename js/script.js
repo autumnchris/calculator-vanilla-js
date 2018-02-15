@@ -15,10 +15,9 @@ function selectNumber(elem) {
 }
 
 function selectOperator(elem) {
-  var lastChar = result.charAt(result.length - 1);
   solveEquation();
 
-  if (lastChar.match(/\s/)) {
+  if (result.charAt(result.length - 1).match(/\s/)) {
     result = result.substr(0, result.length - 3);
   }
   result += ' ' + elem.id + ' ';
@@ -26,9 +25,8 @@ function selectOperator(elem) {
 }
 
 function solveEquation() {
-  var lastChar = result.charAt(result.length - 1);
 
-  if (result.includes(' ') && !lastChar.match(/\s/)) {
+  if (result.includes(' ') && !result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
     var num1 = Number(result[0]);
     var num2 = Number(result[2]);
@@ -53,9 +51,8 @@ function solveEquation() {
 }
 
 function deleteLastInput() {
-  var lastChar = result.charAt(result.length - 1);
 
-  if (!lastChar.match(/\s/)) {
+  if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
 
     if ((result[result.length - 1].length === 2 && result[result.length - 1].charAt(0) === '-') || result[result.length -1].length === 1) {
@@ -71,9 +68,8 @@ function deleteLastInput() {
 }
 
 function togglePosNeg() {
-  var lastChar = result.charAt(result.length - 1);
 
-  if (!lastChar.match(/\s/)) {
+  if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
 
     if (result[result.length - 1] < 0) {
@@ -92,9 +88,8 @@ function togglePosNeg() {
 }
 
 function convertToPercent() {
-  var lastChar = result.charAt(result.length - 1);
 
-  if (!lastChar.match(/\s/)) {
+  if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
     result[result.length - 1] /= 100;
     document.getElementById('screen').value = result[result.length - 1];
@@ -109,9 +104,8 @@ function clearEntry() {
 }
 
 function selectDecimal() {
-  var lastChar = result.charAt(result.length - 1);
 
-  if (!lastChar.match(/\s/)) {
+  if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
 
     if (!result[result.length - 1].includes('.')){
