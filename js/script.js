@@ -14,6 +14,44 @@ function selectNumber(elem) {
   console.log(result);
 }
 
+function selectOperator(elem) {
+  var lastChar = result.charAt(result.length - 1);
+  solveEquation();
+
+  if (lastChar.match(/\s/)) {
+    result = result.substr(0, result.length - 3);
+  }
+  result += ' ' + elem.id + ' ';
+  console.log(result);
+}
+
+function solveEquation() {
+  var lastChar = result.charAt(result.length - 1);
+
+  if (result.includes(' ') && !lastChar.match(/\s/)) {
+    result = result.split(' ');
+    var num1 = Number(result[0]);
+    var num2 = Number(result[2]);
+
+    switch (result[1]) {
+      case '+':
+        result = num1 + num2;
+        break;
+      case '-':
+        result = num1 - num2;
+        break;
+      case '*':
+        result = num1 * num2;
+        break;
+      case '/':
+        result = num1 / num2;
+    }
+  }
+  result = result.toString();
+  document.getElementById('screen').value = result;
+  console.log(result);
+}
+
 // EVENT LISTENERS
 
 document.querySelectorAll('.number').forEach(function(num) {
