@@ -11,8 +11,8 @@ My project for the [Build a JavaScript Calculator challenge](https://www.freecod
 
 ## Built With
 * JavaScript
-* CSS
-* HTML
+* CSS3
+* HTML5
 * [Digital 7 font](https://www.dafont.com/digital-7.font)
 * [Normalize.css](http://necolas.github.io/normalize.css)
 * [Font Awesome](https://fontawesome.com)
