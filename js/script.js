@@ -108,6 +108,21 @@ function clearEntry() {
   document.getElementById('screen').value = result;
 }
 
+function selectDecimal() {
+  var lastChar = result.charAt(result.length - 1);
+
+  if (!lastChar.match(/\s/)) {
+    result = result.split(' ');
+
+    if (!result[result.length - 1].includes('.')){
+      result[result.length - 1] += '.';
+      document.getElementById('screen').value = result[result.length - 1];
+      result = result.join(' ');
+      console.log(result);
+    }
+  }
+}
+
 // EVENT LISTENERS
 
 document.querySelectorAll('.number').forEach(function(num) {
