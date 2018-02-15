@@ -128,3 +128,7 @@ document.getElementById('backspace').addEventListener('click', function() {
 document.getElementById('pos-neg').addEventListener('click', function() {
   togglePosNeg();
 });
+
+document.getElementById('percentage').addEventListener('click', function() {
+  convertToPercent();
+});
