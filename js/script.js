@@ -156,3 +156,7 @@ document.getElementById('percentage').addEventListener('click', function() {
 document.getElementById('clear').addEventListener('click', function() {
   clearEntry();
 });
+
+document.getElementById('decimal').addEventListener('click', function() {
+  selectDecimal();
+});
