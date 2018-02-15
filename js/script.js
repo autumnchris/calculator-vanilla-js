@@ -13,3 +13,11 @@ function selectNumber(elem) {
   result = result.join(' ');
   console.log(result);
 }
+
+// EVENT LISTENERS
+
+document.querySelectorAll('.number').forEach(function(num) {
+  num.addEventListener('click', function() {
+    selectNumber(this);
+  });
+});
