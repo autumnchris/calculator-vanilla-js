@@ -103,6 +103,11 @@ function convertToPercent() {
   }
 }
 
+function clearEntry() {
+  result = '0';
+  document.getElementById('screen').value = result;
+}
+
 // EVENT LISTENERS
 
 document.querySelectorAll('.number').forEach(function(num) {
