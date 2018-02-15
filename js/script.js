@@ -52,6 +52,24 @@ function solveEquation() {
   console.log(result);
 }
 
+function deleteLastInput() {
+  var lastChar = result.charAt(result.length - 1);
+
+  if (!lastChar.match(/\s/)) {
+    result = result.split(' ');
+
+    if ((result[result.length - 1].length === 2 && result[result.length - 1].charAt(0) === '-') || result[result.length -1].length === 1) {
+      result[result.length - 1] = '0';
+    }
+    else {
+      result[result.length - 1] = result[result.length - 1].substr(0, result[result.length - 1].length - 1);
+    }
+    document.getElementById('screen').value = result[result.length - 1];
+    result = result.join(' ');
+    console.log(result);
+  }
+}
+
 // EVENT LISTENERS
 
 document.querySelectorAll('.number').forEach(function(num) {
