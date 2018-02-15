@@ -59,3 +59,13 @@ document.querySelectorAll('.number').forEach(function(num) {
     selectNumber(this);
   });
 });
+
+document.querySelectorAll('.operator').forEach(function(num) {
+  num.addEventListener('click', function() {
+    selectOperator(this);
+  });
+});
+
+document.getElementById('equals').addEventListener('click', function() {
+  solveEquation();
+});
