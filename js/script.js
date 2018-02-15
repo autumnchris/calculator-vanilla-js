@@ -112,3 +112,7 @@ document.getElementById('equals').addEventListener('click', function() {
 document.getElementById('backspace').addEventListener('click', function() {
   deleteLastInput();
 });
+
+document.getElementById('pos-neg').addEventListener('click', function() {
+  togglePosNeg();
+});
