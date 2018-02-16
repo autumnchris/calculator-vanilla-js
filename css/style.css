@@ -79,7 +79,7 @@ h1 {
 button,
 button:hover,
 button:focus {
-  background-color: #0086b3;
+  background-color: #00779e;
   box-shadow: -1px 3px 2px #000;
   border: none;
   border-radius: 4px;
@@ -112,6 +112,7 @@ button:active {
 
 #clear {
   background-color: #f3878c;
+  color: #333;
 }
 
 footer {
