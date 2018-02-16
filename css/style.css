@@ -76,6 +76,13 @@ h1 {
   width: 250px;
 }
 
+.button-row {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
 button,
 button:hover,
 button:focus {
