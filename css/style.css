@@ -53,20 +53,23 @@ h1 {
   padding: 20px 0;
 }
 
-#screen {
+#screen,
+#screen:disabled {
   background-color: #cae2e8;
+  background: linear-gradient(to bottom right, #83bbc9, #cae2e8);
   background: -o-linear-gradient(bottom right, #83bbc9, #cae2e8);
   background: -moz-linear-gradient(bottom right, #83bbc9, #cae2e8);
-  background: linear-gradient(to bottom right, #83bbc9, #cae2e8);
   border: none;
   border-radius: 4px;
   color: #333;
+  -webkit-text-fill-color:#333;
   cursor: default;
   font-family: "digital 7 italic", sans-serif;
   font-size: 2em;
   height: 50px;
   letter-spacing: 2px;
   margin-top: 2px;
+  opacity: 1 !important;
   padding-top: 20px;
   padding-right: 5px;
   text-align: right;
@@ -136,6 +139,11 @@ footer a:focus {
 
   .calculator {
     max-width: 400px;
+  }
+
+  #screen,
+  #screen:disabled {
+    width: 350px;
   }
 
   button,
