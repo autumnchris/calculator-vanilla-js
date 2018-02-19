@@ -113,11 +113,10 @@ button:active {
   color: #333;
 }
 
-#backspace {
-  background-color: #333;
-}
-
-#clear {
+.clear,
+.clear:hover,
+.clear:active,
+.clear:focus {
   background-color: #f3878c;
   color: #333;
 }
