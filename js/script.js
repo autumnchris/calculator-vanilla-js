@@ -47,22 +47,6 @@ function solveEquation() {
   }
 }
 
-function deleteLastInput() {
-
-  if (!result.charAt(result.length - 1).match(/\s/)) {
-    result = result.split(' ');
-
-    if ((result[result.length - 1].length === 2 && result[result.length - 1].charAt(0) === '-') || result[result.length -1].length === 1) {
-      result[result.length - 1] = '0';
-    }
-    else {
-      result[result.length - 1] = result[result.length - 1].substr(0, result[result.length - 1].length - 1);
-    }
-    document.getElementById('screen').value = result[result.length - 1];
-    result = result.join(' ');
-  }
-}
-
 function togglePosNeg() {
 
   if (!result.charAt(result.length - 1).match(/\s/)) {
@@ -93,6 +77,19 @@ function convertToPercent() {
 }
 
 function clearEntry() {
+
+  if (!result.charAt(result.length - 1).match(/\s/)) {
+    result = result.split(' ');
+    result[result.length - 1] = '0';
+    document.getElementById('screen').value = result[result.length - 1];
+    result = result.join(' ');
+  }
+  else {
+    result = result.substr(0, result.length - 3);
+  }
+}
+
+function clearAll() {
   result = '0';
   document.getElementById('screen').value = result;
 }
@@ -128,10 +125,6 @@ document.getElementById('equals').addEventListener('click', function() {
   solveEquation();
 });
 
-document.getElementById('backspace').addEventListener('click', function() {
-  deleteLastInput();
-});
-
 document.getElementById('pos-neg').addEventListener('click', function() {
   togglePosNeg();
 });
@@ -140,8 +133,12 @@ document.getElementById('percentage').addEventListener('click', function() {
   convertToPercent();
 });
 
-document.getElementById('clear').addEventListener('click', function() {
+document.getElementById('clear-entry').addEventListener('click', function() {
   clearEntry();
+});
+
+document.getElementById('clear-all').addEventListener('click', function() {
+  clearAll();
 });
 
 document.getElementById('decimal').addEventListener('click', function() {
