@@ -9,7 +9,7 @@ function selectNumber(elem) {
     result[result.length - 1] = result[result.length - 1].substr(1);
   }
   result[result.length - 1] += elem.id;
-  document.getElementById('screen').value = result[result.length - 1];
+  document.querySelector('.screen').value = result[result.length - 1];
   result = result.join(' ');
 }
 
@@ -43,7 +43,7 @@ function solveEquation() {
         result = num1 / num2;
     }
     result = result.toString();
-    document.getElementById('screen').value = result;
+    document.querySelector('.screen').value = result;
   }
 }
 
@@ -61,7 +61,7 @@ function togglePosNeg() {
     else {
       result[result.length - 1] = 0;
     }
-    document.getElementById('screen').value = result[result.length - 1];
+    document.querySelector('.screen').value = result[result.length - 1];
     result = result.join(' ');
   }
 }
@@ -71,7 +71,7 @@ function convertToPercent() {
   if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
     result[result.length - 1] /= 100;
-    document.getElementById('screen').value = result[result.length - 1];
+    document.querySelector('.screen').value = result[result.length - 1];
     result = result.join(' ');
   }
 }
@@ -81,7 +81,7 @@ function clearEntry() {
   if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
     result[result.length - 1] = '0';
-    document.getElementById('screen').value = result[result.length - 1];
+    document.querySelector('.screen').value = result[result.length - 1];
     result = result.join(' ');
   }
   else {
@@ -91,7 +91,7 @@ function clearEntry() {
 
 function clearAll() {
   result = '0';
-  document.getElementById('screen').value = result;
+  document.querySelector('.screen').value = result;
 }
 
 function selectDecimal() {
@@ -101,7 +101,7 @@ function selectDecimal() {
 
     if (!result[result.length - 1].includes('.')){
       result[result.length - 1] += '.';
-      document.getElementById('screen').value = result[result.length - 1];
+      document.querySelector('.screen').value = result[result.length - 1];
     }
     result = result.join(' ');
   }
@@ -121,26 +121,26 @@ document.querySelectorAll('.operator').forEach(function(num) {
   });
 });
 
-document.getElementById('equals').addEventListener('click', function() {
+document.querySelector('.equals').addEventListener('click', function() {
   solveEquation();
 });
 
-document.getElementById('pos-neg').addEventListener('click', function() {
+document.querySelector('.pos-neg').addEventListener('click', function() {
   togglePosNeg();
 });
 
-document.getElementById('percentage').addEventListener('click', function() {
+document.querySelector('.percentage').addEventListener('click', function() {
   convertToPercent();
 });
 
-document.getElementById('clear-entry').addEventListener('click', function() {
+document.querySelector('.clear-entry').addEventListener('click', function() {
   clearEntry();
 });
 
-document.getElementById('clear-all').addEventListener('click', function() {
+document.querySelector('.clear-all').addEventListener('click', function() {
   clearAll();
 });
 
-document.getElementById('decimal').addEventListener('click', function() {
+document.querySelector('.decimal').addEventListener('click', function() {
   selectDecimal();
 });

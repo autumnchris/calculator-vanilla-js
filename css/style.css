@@ -53,8 +53,8 @@ h1 {
   padding: 20px 0;
 }
 
-#screen,
-#screen:disabled {
+.screen,
+.screen:disabled {
   background-color: #cae2e8;
   background: linear-gradient(to bottom right, #83bbc9, #cae2e8);
   background: -o-linear-gradient(bottom right, #83bbc9, #cae2e8);
@@ -148,8 +148,8 @@ footer a:focus {
     max-width: 400px;
   }
 
-  #screen,
-  #screen:disabled {
+  .screen,
+  .screen:disabled {
     width: 350px;
   }
 
