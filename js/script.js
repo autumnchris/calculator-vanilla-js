@@ -8,7 +8,7 @@ function selectNumber(elem) {
   if (result[result.length - 1] === '0') {
     result[result.length - 1] = result[result.length - 1].substr(1);
   }
-  result[result.length - 1] += elem.id;
+  result[result.length - 1] += elem;
   document.querySelector('.screen').value = result[result.length - 1];
   result = result.join(' ');
 }
@@ -19,7 +19,7 @@ function selectOperator(elem) {
   if (result.charAt(result.length - 1).match(/\s/)) {
     result = result.substr(0, result.length - 3);
   }
-  result += ' ' + elem.id + ' ';
+  result += ' ' + elem + ' ';
 }
 
 function solveEquation() {
@@ -107,17 +107,74 @@ function selectDecimal() {
   }
 }
 
+function setKeys(event) {
+
+  if (event.shiftKey) {
+    switch (event.keyCode) {
+      // plus sign
+      case 187:
+        selectOperator(event.key);
+        break;
+      // multiplication sign
+      case 56:
+        selectOperator(event.key);
+        break;
+      // percentage
+      case 53:
+        convertToPercent();
+    }
+  }
+  else {
+    if (event.keyCode >= 48 && event.keyCode <= 57) {
+      selectNumber(event.key);
+    }
+    else {
+      switch (event.keyCode) {
+        // minus sign
+        case 189:
+          selectOperator(event.key);
+          break;
+        // division sign
+        case 191:
+          selectOperator(event.key);
+          break;
+        // equal sign
+        case 187:
+        // enter
+        case 13:
+          solveEquation();
+          break;
+        // spacebar
+        case 32:
+          togglePosNeg();
+          break;
+        // delete/backspace
+        case 8:
+          clearEntry();
+          break;
+        // escape
+        case 27:
+          clearAll();
+          break;
+        // decimal/period
+        case 190:
+          selectDecimal();
+      }
+    }
+  }
+}
+
 // EVENT LISTENERS
 
 document.querySelectorAll('.number').forEach(function(num) {
   num.addEventListener('click', function() {
-    selectNumber(this);
+    selectNumber(event.target.id);
   });
 });
 
 document.querySelectorAll('.operator').forEach(function(num) {
   num.addEventListener('click', function() {
-    selectOperator(this);
+    selectOperator(event.target.id);
   });
 });
 
@@ -144,3 +201,5 @@ document.querySelector('.clear-all').addEventListener('click', function() {
 document.querySelector('.decimal').addEventListener('click', function() {
   selectDecimal();
 });
+
+window.addEventListener('keydown', setKeys);
