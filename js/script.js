@@ -23,11 +23,13 @@ function selectOperator(elem) {
 }
 
 function solveEquation() {
+  var num1,
+  num2;
 
   if (result.includes(' ') && !result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
-    var num1 = Number(result[0]);
-    var num2 = Number(result[2]);
+    num1 = Number(result[0]);
+    num2 = Number(result[2]);
 
     switch (result[1]) {
       case '+':
