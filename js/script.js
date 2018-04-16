@@ -1,4 +1,4 @@
-var result = '0';
+let result = '0';
 
 // FUNCTIONS
 
@@ -19,12 +19,12 @@ function selectOperator(elem) {
   if (result.charAt(result.length - 1).match(/\s/)) {
     result = result.substr(0, result.length - 3);
   }
-  result += ' ' + elem + ' ';
+  result += ` ${elem} `;
 }
 
 function solveEquation() {
-  var num1,
-  num2;
+  let num1;
+  let num2;
 
   if (result.includes(' ') && !result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
@@ -168,39 +168,39 @@ function setKeys(event) {
 
 // EVENT LISTENERS
 
-document.querySelectorAll('.number').forEach(function(num) {
-  num.addEventListener('click', function() {
+document.querySelectorAll('.number').forEach(num => {
+  num.addEventListener('click', () => {
     selectNumber(event.target.id);
   });
 });
 
-document.querySelectorAll('.operator').forEach(function(num) {
-  num.addEventListener('click', function() {
+document.querySelectorAll('.operator').forEach(operator => {
+  operator.addEventListener('click', () => {
     selectOperator(event.target.id);
   });
 });
 
-document.querySelector('.equals').addEventListener('click', function() {
+document.querySelector('.equals').addEventListener('click', () => {
   solveEquation();
 });
 
-document.querySelector('.pos-neg').addEventListener('click', function() {
+document.querySelector('.pos-neg').addEventListener('click', () => {
   togglePosNeg();
 });
 
-document.querySelector('.percentage').addEventListener('click', function() {
+document.querySelector('.percentage').addEventListener('click', () => {
   convertToPercent();
 });
 
-document.querySelector('.clear-entry').addEventListener('click', function() {
+document.querySelector('.clear-entry').addEventListener('click', () => {
   clearEntry();
 });
 
-document.querySelector('.clear-all').addEventListener('click', function() {
+document.querySelector('.clear-all').addEventListener('click', () => {
   clearAll();
 });
 
-document.querySelector('.decimal').addEventListener('click', function() {
+document.querySelector('.decimal').addEventListener('click', () => {
   selectDecimal();
 });
 
