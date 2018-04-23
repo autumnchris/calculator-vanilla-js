@@ -169,13 +169,13 @@ function setKeys(event) {
 // EVENT LISTENERS
 
 document.querySelectorAll('.number').forEach(num => {
-  num.addEventListener('click', () => {
+  num.addEventListener('click', (event) => {
     selectNumber(event.target.id);
   });
 });
 
 document.querySelectorAll('.operator').forEach(operator => {
-  operator.addEventListener('click', () => {
+  operator.addEventListener('click', (event) => {
     selectOperator(event.target.id);
   });
 });
