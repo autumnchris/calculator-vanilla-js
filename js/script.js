@@ -204,4 +204,6 @@ document.querySelector('.decimal').addEventListener('click', () => {
   selectDecimal();
 });
 
-window.addEventListener('keydown', setKeys);
+window.addEventListener('keydown', (event) => {
+  setKeys(event);
+});
