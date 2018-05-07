@@ -12,10 +12,6 @@ html {
   background: linear-gradient(120deg, #262626, #4d4d4d) fixed;
 }
 
-body {
-  text-align: center;
-}
-
 h1 {
   color: #fff;
   font-family: "Oxygen Mono", monospace;
