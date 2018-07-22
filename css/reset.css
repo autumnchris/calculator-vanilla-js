@@ -11,9 +11,7 @@ h5,
 h6,
 div,
 button,
-a,
-form,
-input {
+a {
   background: transparent;
   border: 0;
   border-radius: 0;

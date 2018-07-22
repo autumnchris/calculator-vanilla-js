@@ -33,23 +33,20 @@ main {
   padding: 20px 0;
 }
 
-.screen,
-.screen:disabled {
+.screen {
   background: #cae2e8;
   background: linear-gradient(to right, #83bbc9, #cae2e8) fixed;
   border-radius: 4px;
-  cursor: default;
   font-family: "digital 7 italic", Helvetica, Arial, sans-serif;
   font-size: 1.8rem;
   height: 50px;
   letter-spacing: 2px;
-  margin-top: 2px;
-  opacity: 1;
+  margin: 2px auto 0;
+  overflow: auto;
   padding-top: 20px;
   padding-right: 5px;
   text-align: right;
   width: 250px;
-  -webkit-text-fill-color: #333;
 }
 
 .button-row {
@@ -122,8 +119,7 @@ footer a:focus {
     max-width: 400px;
   }
 
-  .screen,
-  .screen:disabled {
+  .screen {
     width: 350px;
   }
 

@@ -9,7 +9,7 @@ function selectNumber(elem) {
     result[result.length - 1] = result[result.length - 1].substr(1);
   }
   result[result.length - 1] += elem;
-  document.querySelector('.screen').value = result[result.length - 1];
+  document.querySelector('.screen').innerHTML = result[result.length - 1];
   result = result.join(' ');
 }
 
@@ -45,7 +45,7 @@ function solveEquation() {
         result = num1 / num2;
     }
     result = result.toString();
-    document.querySelector('.screen').value = result;
+    document.querySelector('.screen').innerHTML = result;
   }
 }
 
@@ -63,7 +63,7 @@ function togglePosNeg() {
     else {
       result[result.length - 1] = 0;
     }
-    document.querySelector('.screen').value = result[result.length - 1];
+    document.querySelector('.screen').innerHTML = result[result.length - 1];
     result = result.join(' ');
   }
 }
@@ -73,7 +73,7 @@ function convertToPercent() {
   if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
     result[result.length - 1] /= 100;
-    document.querySelector('.screen').value = result[result.length - 1];
+    document.querySelector('.screen').innerHTML = result[result.length - 1];
     result = result.join(' ');
   }
 }
@@ -83,7 +83,7 @@ function clearEntry() {
   if (!result.charAt(result.length - 1).match(/\s/)) {
     result = result.split(' ');
     result[result.length - 1] = '0';
-    document.querySelector('.screen').value = result[result.length - 1];
+    document.querySelector('.screen').innerHTML = result[result.length - 1];
     result = result.join(' ');
   }
   else {
@@ -93,7 +93,7 @@ function clearEntry() {
 
 function clearAll() {
   result = '0';
-  document.querySelector('.screen').value = result;
+  document.querySelector('.screen').innerHTML = result;
 }
 
 function selectDecimal() {
@@ -103,7 +103,7 @@ function selectDecimal() {
 
     if (!result[result.length - 1].includes('.')){
       result[result.length - 1] += '.';
-      document.querySelector('.screen').value = result[result.length - 1];
+      document.querySelector('.screen').innerHTML = result[result.length - 1];
     }
     result = result.join(' ');
   }
