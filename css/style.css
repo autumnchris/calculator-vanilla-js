@@ -50,6 +50,9 @@ main {
 }
 
 .button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -65,7 +68,7 @@ button:focus {
   color: #fff;
   font-size: 1rem;
   height: 45px;
-  margin: 5px 3px;
+  margin: 5px;
   width: 55px;
 }
 
