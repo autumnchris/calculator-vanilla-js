@@ -49,9 +49,9 @@ main {
   width: 250px;
 }
 
-.button-row {
-  display: flex;
-  flex-direction: row;
+.button-group {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   justify-content: center;
   user-select: none;
   -webkit-user-select: none;
