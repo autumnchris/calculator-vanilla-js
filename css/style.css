@@ -8,12 +8,12 @@
 }
 
 html {
-  background: #333;
-  background: linear-gradient(120deg, #262626, #4d4d4d) fixed;
+  background: hsl(0, 0%, 20%);
+  background: linear-gradient(120deg, hsl(0, 0%, 15%), hsl(0, 0%, 30%)) fixed;
 }
 
 h1 {
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   font-family: "Oxygen Mono", monospace;
   font-size: 1.5rem;
   letter-spacing: 12px;
@@ -26,7 +26,7 @@ main {
 }
 
 .calculator {
-  background: rgba(255, 255, 255, 0.1);
+  background: hsla(0, 0%, 100%, 0.1);
   border-radius: 6px;
   margin: 0 auto 30px;
   max-width: 320px;
@@ -34,8 +34,8 @@ main {
 }
 
 .screen {
-  background: #cae2e8;
-  background: linear-gradient(to right, #83bbc9, #cae2e8) fixed;
+  background: hsl(192, 39%, 85%);
+  background: linear-gradient(to right, hsl(192, 39%, 65%), hsl(192, 39%, 85%)) fixed;
   border-radius: 4px;
   font-family: "digital 7 italic", Helvetica, Arial, sans-serif;
   font-size: 1.8rem;
@@ -63,9 +63,9 @@ button,
 button:hover,
 button:focus {
   background: #00779e;
-  box-shadow: -1px 3px 2px #000;
+  box-shadow: -1px 3px 2px hsl(0, 0%, 0%);
   border-radius: 4px;
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   font-size: 1rem;
   height: 45px;
   margin: 5px;
@@ -73,7 +73,7 @@ button:focus {
 }
 
 button:active {
-  box-shadow: -1px 1px 2px #000;
+  box-shadow: -1px 1px 2px hsl(0, 0%, 0%);
   transform: translateY(2px);
   -ms-transform: translateY(2px);
   -webkit-transform: translateY(2px);
@@ -83,8 +83,8 @@ button:active {
 .number:hover,
 .number:active,
 .number:focus {
-  background: #fff;
-  color: #333;
+  background: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 20%);
 }
 
 .clear,
@@ -92,13 +92,13 @@ button:active {
 .clear:active,
 .clear:focus {
   background: #f3878c;
-  color: #333;
+  color: hsl(0, 0%, 20%);
 }
 
 footer {
-  background: rgba(255, 255, 255, 0.1);
+  background: hsla(0, 0%, 100%, 0.1);
   bottom: 0;
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   font-size: 0.8rem;
   left: 0;
   letter-spacing: 2px;
@@ -113,7 +113,7 @@ footer a:visited,
 footer a:hover,
 footer a:active,
 footer a:focus {
-  color: #83bbc9;
+  color: hsl(192, 39%, 65%);
 }
 
 @media only screen and (orientation: landscape) {
