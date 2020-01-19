@@ -1,6 +1,6 @@
 # Calculator (vanilla JS)
 
-My project for the [Build a JavaScript Calculator challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-javascript-calculator) as part of the curriculum for the Front End Libraries Certification on [Free Code Camp](https://www.freecodecamp.org). Built with vanilla JS.
+My project for the [Build a JavaScript Calculator challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-javascript-calculator) as part of the curriculum for the Front End Libraries Certification on [freeCodeCamp](https://www.freecodecamp.org). Built with vanilla JS.
 
 Project also meets the requirements for the [Calculator assignment](https://www.theodinproject.com/courses/web-development-101/lessons/calculator) as part of the curriculum for the [Web Development 101 course](https://www.theodinproject.com/courses/web-development-101) on [The Odin Project](https://www.theodinproject.com).
 
