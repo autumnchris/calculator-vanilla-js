@@ -10,6 +10,7 @@ h4,
 h5,
 h6,
 div,
+span,
 button,
 a {
   background: transparent;
@@ -49,6 +50,11 @@ a:focus {
 
 a:hover {
   text-decoration: underline;
+}
+
+span {
+  color: inherit;
+  letter-spacing: inherit;
 }
 
 button,

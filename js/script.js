@@ -204,6 +204,8 @@ document.querySelector('.decimal').addEventListener('click', () => {
   selectDecimal();
 });
 
+document.querySelector('.current-year').innerHTML = new Date().getFullYear();
+
 window.addEventListener('keydown', (event) => {
   setKeys(event);
 });
