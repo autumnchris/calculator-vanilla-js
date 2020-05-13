@@ -10,6 +10,7 @@ Project also meets the requirements for the [Calculator assignment](https://www.
 * JavaScript
 * CSS3
 * HTML5
+* [Normalize.css](https://necolas.github.io/normalize.css)
 * [Digital 7 font](https://www.dafont.com/digital-7.font)
 * [Google Fonts](https://fonts.google.com)
 

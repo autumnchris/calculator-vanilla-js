@@ -1,3 +1,101 @@
+const calcButtons = [
+  {
+    value: '+/-',
+    id: 'pos-neg'
+  },
+  {
+    value: '%',
+    id: 'percentage'
+  },
+  {
+    value: 'CE',
+    className: 'clear',
+    id: 'clear-entry'
+  },
+  {
+    value: 'AC',
+    className: 'clear',
+    id: 'clear-all'
+  },
+  {
+    value: '7',
+    className: 'number',
+    id: '7'
+  },
+  {
+    value: '8',
+    className: 'number',
+    id: '8'
+  },
+  {
+    value: '9',
+    className: 'number',
+    id: '9'
+  },
+  {
+    value: '&divide;',
+    className: 'operator',
+    id: '/'
+  },
+  {
+    value: '4',
+    className: 'number',
+    id: '4'
+  },
+  {
+    value: '5',
+    className: 'number',
+    id: '5'
+  },
+  {
+    value: '6',
+    className: 'number',
+    id: '6'
+  },
+  {
+    value: '&times;',
+    className: 'operator',
+    id: '*'
+  },
+  {
+    value: '1',
+    className: 'number',
+    id: '1'
+  },
+  {
+    value: '2',
+    className: 'number',
+    id: '2'
+  },
+  {
+    value: '3',
+    className: 'number',
+    id: '3'
+  },
+  {
+    value: '-',
+    className: 'operator',
+    id: '-'
+  },
+  {
+    value: '0',
+    className: 'number',
+    id: '0'
+  },
+  {
+    value: '.',
+    id: 'decimal'
+  },
+  {
+    value: '=',
+    id: 'equals'
+  },
+  {
+    value: '+',
+    className : 'operator',
+    id: '+'
+  }
+];
 let result = '0';
 
 // FUNCTIONS
@@ -168,6 +266,10 @@ function setKeys(event) {
 
 // EVENT LISTENERS
 
+document.querySelector('.calc-buttons-container').innerHTML = calcButtons.map(calcButton => {
+  return `<button type="button" class="button calc-button ${typeof calcButton.className !== 'undefined' ? calcButton.className : ''}" id="${calcButton.id}">${calcButton.value}</button>`;
+}).join('');
+
 document.querySelectorAll('.number').forEach(num => {
   num.addEventListener('click', (event) => {
     selectNumber(event.target.id);
@@ -180,27 +282,27 @@ document.querySelectorAll('.operator').forEach(operator => {
   });
 });
 
-document.querySelector('.equals').addEventListener('click', () => {
+document.getElementById('equals').addEventListener('click', () => {
   solveEquation();
 });
 
-document.querySelector('.pos-neg').addEventListener('click', () => {
+document.getElementById('pos-neg').addEventListener('click', () => {
   togglePosNeg();
 });
 
-document.querySelector('.percentage').addEventListener('click', () => {
+document.getElementById('percentage').addEventListener('click', () => {
   convertToPercent();
 });
 
-document.querySelector('.clear-entry').addEventListener('click', () => {
+document.getElementById('clear-entry').addEventListener('click', () => {
   clearEntry();
 });
 
-document.querySelector('.clear-all').addEventListener('click', () => {
+document.getElementById('clear-all').addEventListener('click', () => {
   clearAll();
 });
 
-document.querySelector('.decimal').addEventListener('click', () => {
+document.getElementById('decimal').addEventListener('click', () => {
   selectDecimal();
 });
 
