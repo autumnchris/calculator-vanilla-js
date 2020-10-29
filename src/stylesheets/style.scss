@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "digital 7 italic";
+  src: url(../fonts/digital-7-italic.ttf);
+}
+
+@import "variables";
+
+// BASE PAGE STYLES
+
+html {
+  background: transparent;
+  box-sizing: border-box;
+  color: change-color($black, $lightness: 100%);
+  height: 100%;
+  letter-spacing: 1px;
+  text-align: center;
+  body {
+    background: change-color($black, $lightness: 20%);
+    background: linear-gradient(120deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
+    min-height: 100%;
+    overscroll-behavior: none;
+    padding: 0 20px;
+    position: relative;
+    header {
+      padding-top: 40px;
+    }
+    main {
+      padding-bottom: 6rem;
+    }
+    footer {
+      background: rgba(change-color($black, $lightness: 100%), 0.1);
+      bottom: 0;
+      font-size: 0.8rem;
+      left: 0;
+      letter-spacing: 2px;
+      padding: 14px 0;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      box-sizing: border-box;
+      margin-top: 0;
+    }
+  }
+}
+
+// BASE ELEMENT STYLES
+
+div,
+header,
+main,
+footer,
+button,
+button:hover,
+button:active,
+button:focus {
+  box-sizing: border-box;
+}
+
+a,
+a:visited,
+a:hover,
+a:active,
+a:focus {
+  color: $light-blue;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+a:focus,
+button:focus,
+details:focus,
+input:focus,
+select:focus,
+textarea:focus,
+[tabindex]:focus {
+  box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
+  outline: none;
+}
+
+.button,
+.button:visited,
+.button:hover,
+.button:active,
+.button:focus {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  line-height: normal;
+  padding: 0;
+  width: auto;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.message {
+  border-radius: 5px;
+  line-height: 1.55;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 15px 10px;
+}
+
+// SPECIFIC ELEMENT STYLES
+
+h1 {
+  font-family: $monospace-font;
+  font-size: 1.5rem;
+  letter-spacing: 12px;
+  text-transform: lowercase;
+}
+
+.calculator {
+  background: rgba(change-color($black, $lightness: 100%), 0.1);
+  border-radius: 6px;
+  margin: 0 auto;
+  max-width: 320px;
+  padding: 20px 0;
+  @media only screen and (orientation: landscape) {
+    max-width: 400px;
+  }
+  .screen {
+    background: change-color($light-blue, $lightness: 85%);
+    background: linear-gradient(to right, $light-blue, change-color($light-blue, $lightness: 85%)) fixed;
+    border-radius: 4px;
+    color: change-color($black, $lightness: 20%);
+    font-family: $screen-font;
+    font-size: 1.8rem;
+    height: 50px;
+    letter-spacing: 2px;
+    margin: 2px auto;
+    overflow: auto;
+    padding-top: 20px;
+    padding-right: 5px;
+    text-align: right;
+    width: 250px;
+    @media only screen and (orientation: landscape) {
+      width: 350px;
+    }
+  }
+  .calc-buttons-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    .calc-button,
+    .calc-button:hover,
+    .calc-button:active,
+    .calc-button:focus {
+      background: $calc-button-color;
+      border-radius: 4px;
+      box-shadow: -1px 3px 2px $black;
+      color: change-color($black, $lightness: 100%);
+      height: 45px;
+      margin: 5px;
+      width: 55px;
+      @media only screen and (orientation: landscape) {
+        height: 40px;
+        width: 80px;
+      }
+      &:active {
+        box-shadow: -1px 1px 2px $black;
+        -webkit-transform: translateY(2px);
+        -ms-transform: translateY(2px);
+        transform: translateY(2px);
+      }
+      &:focus {
+        font-size: 1.35rem;
+      }
+    }
+    .number,
+    .number:hover,
+    .number:active,
+    .number:focus {
+      background: change-color($black, $lightness: 100%);
+      color: change-color($black, $lightness: 20%);
+    }
+    .clear,
+    .clear:hover,
+    .clear:active,
+    .clear:focus {
+      background: $clear-button-color;
+      color: change-color($black, $lightness: 20%);
+    }
+  }
+}
+
+.info-message {
+  background: change-color($info-blue, $lightness: 95%);
+  border: 1px solid change-color($info-blue, $lightness: 90%);
+  color: $info-blue;
+}
+
+noscript .info-message {
+  left: 50%;
+  margin: 0 auto;
+  min-width: 280px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

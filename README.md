@@ -8,7 +8,9 @@ Project also meets the requirements for the [Calculator assignment](https://www.
 
 ## Built With
 * JavaScript
-* CSS3
+* [Sass](http://sass-lang.com)
+* [Webpack](https://webpack.js.org)
+* [Babel](https://babeljs.io)
 * HTML5
 * [Normalize.css](https://necolas.github.io/normalize.css)
 * [Digital 7 font](https://www.dafont.com/digital-7.font)
@@ -17,3 +19,13 @@ Project also meets the requirements for the [Calculator assignment](https://www.
 ## Demo
 
 View project demo at [https://autumnchris.github.io/calculator-vanilla-js](https://autumnchris.github.io/calculator-vanilla-js).
+
+## Installation
+
+```
+$ git clone https://github.com/autumnchris/calculator-vanilla-js.git
+$ cd calculator-vanilla-js
+$ npm install
+$ npm start
+```
+Go to `http://localhost:8080`.
