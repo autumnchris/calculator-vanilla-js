@@ -9,6 +9,7 @@
 
 html {
   background: transparent;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: change-color($black, $lightness: 100%);
   height: 100%;
@@ -16,8 +17,10 @@ html {
   text-align: center;
   body {
     background: change-color($black, $lightness: 20%);
+    background: -o-linear-gradient(330deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
     background: linear-gradient(120deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
     min-height: 100%;
+    -ms-scroll-chaining: none;
     overscroll-behavior: none;
     padding: 0 20px;
     position: relative;
@@ -44,6 +47,7 @@ html {
     h4,
     h5,
     h6 {
+      -webkit-box-sizing: border-box;
       box-sizing: border-box;
       margin-top: 0;
     }
@@ -60,6 +64,7 @@ button,
 button:hover,
 button:active,
 button:focus {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -82,6 +87,7 @@ input:focus,
 select:focus,
 textarea:focus,
 [tabindex]:focus {
+  -webkit-box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
   box-shadow: 0 0 3px 3px hsla(203, 95%, 62%, 0.8);
   outline: none;
 }
@@ -126,11 +132,13 @@ h1 {
   margin: 0 auto;
   max-width: 320px;
   padding: 20px 0;
-  @media only screen and (orientation: landscape) {
+  @media all and (orientation: landscape) {
     max-width: 400px;
   }
   .screen {
     background: change-color($light-blue, $lightness: 85%);
+    background: -webkit-gradient(linear, left top, right top, from($light-blue), to(change-color($light-blue, $lightness: 85%))) fixed;
+    background: -o-linear-gradient(left, $light-blue, change-color($light-blue, $lightness: 85%)) fixed;
     background: linear-gradient(to right, $light-blue, change-color($light-blue, $lightness: 85%)) fixed;
     border-radius: 4px;
     color: change-color($black, $lightness: 20%);
@@ -144,13 +152,17 @@ h1 {
     padding-right: 5px;
     text-align: right;
     width: 250px;
-    @media only screen and (orientation: landscape) {
+    @media all and (orientation: landscape) {
       width: 350px;
     }
   }
   .calc-buttons-container {
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: auto auto auto auto;
     grid-template-columns: auto auto auto auto;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -162,16 +174,18 @@ h1 {
     .calc-button:focus {
       background: $calc-button-color;
       border-radius: 4px;
+      -webkit-box-shadow: -1px 3px 2px $black;
       box-shadow: -1px 3px 2px $black;
       color: change-color($black, $lightness: 100%);
       height: 45px;
       margin: 5px;
       width: 55px;
-      @media only screen and (orientation: landscape) {
+      @media all and (orientation: landscape) {
         height: 40px;
         width: 80px;
       }
       &:active {
+        -webkit-box-shadow: -1px 1px 2px $black;
         box-shadow: -1px 1px 2px $black;
         -webkit-transform: translateY(2px);
         -ms-transform: translateY(2px);
@@ -211,5 +225,7 @@ noscript .info-message {
   position: absolute;
   text-align: center;
   top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
