@@ -2,7 +2,7 @@
 
 A front-end web app that does arithmetic operations equivalent to a simple calculator. Includes keyboard functionality. Built with vanilla JS.
 
-Inspired by both the [Build a JavaScript Calculator challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-javascript-calculator) as part of the curriculum for the [Front End Development Libraries Certification](https://www.freecodecamp.org/learn/front-end-libraries) on [freeCodeCamp](https://www.freecodecamp.org) as well as the [Calculator assignment](https://www.theodinproject.com/courses/web-development-101/lessons/calculator) as part of the curriculum for the [Foundations course](https://www.theodinproject.com/paths/foundations/courses/foundations) on the [The Odin Project](https://www.theodinproject.com).
+Inspired by both the [Build a JavaScript Calculator challenge](https://learn.freecodecamp.org/front-end-libraries/front-end-libraries-projects/build-a-javascript-calculator) as part of the curriculum for the [Front End Development Libraries Certification](https://www.freecodecamp.org/learn/front-end-libraries) on [freeCodeCamp](https://www.freecodecamp.org) as well as the [Calculator assignment](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/calculator) as part of the curriculum for the [Foundations course](https://www.theodinproject.com/paths/foundations/courses/foundations) on the [The Odin Project](https://www.theodinproject.com).
 
 ---
 
