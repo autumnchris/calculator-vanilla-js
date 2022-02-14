@@ -126,6 +126,17 @@ h1 {
   text-transform: lowercase;
 }
 
+.page-not-found-message {
+  padding-top: 10%;
+  h1 {
+    font-family: inherit;
+    font-size: 1.9rem;
+    font-weight: 400;
+    letter-spacing: inherit;
+    text-transform: initial;
+  }
+}
+
 .calculator {
   background: rgba(change-color($black, $lightness: 100%), 0.1);
   border-radius: 6px;
