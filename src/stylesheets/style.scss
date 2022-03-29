@@ -7,11 +7,13 @@
 
 // BASE PAGE STYLES
 
-html {
-  background: transparent;
+* {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  color: change-color($black, $lightness: 100%);
+}
+
+html {
+  background: transparent;
   height: 100%;
   letter-spacing: 1px;
   text-align: center;
@@ -19,6 +21,7 @@ html {
     background: change-color($black, $lightness: 20%);
     background: -o-linear-gradient(330deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
     background: linear-gradient(120deg, change-color($black, $lightness: 15%), change-color($black, $lightness: 30%)) fixed;
+    color: change-color($black, $lightness: 100%);
     min-height: 100%;
     -ms-scroll-chaining: none;
     overscroll-behavior: none;
@@ -47,25 +50,15 @@ html {
     h4,
     h5,
     h6 {
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
       margin-top: 0;
     }
+    h1 {
+      font-family: $monospace-font;
+      font-size: 1.5rem;
+      letter-spacing: 12px;
+      text-transform: lowercase;
+    }
   }
-}
-
-// BASE ELEMENT STYLES
-
-div,
-header,
-main,
-footer,
-button,
-button:hover,
-button:active,
-button:focus {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 a,
@@ -92,40 +85,6 @@ textarea:focus,
   outline: none;
 }
 
-.button,
-.button:visited,
-.button:hover,
-.button:active,
-.button:focus {
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  cursor: pointer;
-  line-height: normal;
-  padding: 0;
-  width: auto;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.message {
-  border-radius: 5px;
-  line-height: 1.55;
-  margin: 20px auto;
-  max-width: 800px;
-  padding: 15px 10px;
-}
-
-// SPECIFIC ELEMENT STYLES
-
-h1 {
-  font-family: $monospace-font;
-  font-size: 1.5rem;
-  letter-spacing: 12px;
-  text-transform: lowercase;
-}
-
 .page-not-found-message {
   padding-top: 10%;
   h1 {
@@ -137,90 +96,13 @@ h1 {
   }
 }
 
-.calculator {
-  background: rgba(change-color($black, $lightness: 100%), 0.1);
-  border-radius: 6px;
-  margin: 0 auto;
-  max-width: 320px;
-  padding: 20px 0;
-  @media all and (orientation: landscape) {
-    max-width: 400px;
-  }
-  .screen {
-    background: change-color($light-blue, $lightness: 85%);
-    background: -webkit-gradient(linear, left top, right top, from($light-blue), to(change-color($light-blue, $lightness: 85%))) fixed;
-    background: -o-linear-gradient(left, $light-blue, change-color($light-blue, $lightness: 85%)) fixed;
-    background: linear-gradient(to right, $light-blue, change-color($light-blue, $lightness: 85%)) fixed;
-    border-radius: 4px;
-    color: change-color($black, $lightness: 20%);
-    font-family: $screen-font;
-    font-size: 1.8rem;
-    height: 50px;
-    letter-spacing: 2px;
-    margin: 2px auto;
-    overflow: auto;
-    padding-top: 20px;
-    padding-right: 5px;
-    text-align: right;
-    width: 250px;
-    @media all and (orientation: landscape) {
-      width: 350px;
-    }
-  }
-  .calc-buttons-container {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: auto auto auto auto;
-    grid-template-columns: auto auto auto auto;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    .calc-button,
-    .calc-button:hover,
-    .calc-button:active,
-    .calc-button:focus {
-      background: $calc-button-color;
-      border-radius: 4px;
-      -webkit-box-shadow: -1px 3px 2px $black;
-      box-shadow: -1px 3px 2px $black;
-      color: change-color($black, $lightness: 100%);
-      height: 45px;
-      margin: 5px;
-      width: 55px;
-      @media all and (orientation: landscape) {
-        height: 40px;
-        width: 80px;
-      }
-      &:active {
-        -webkit-box-shadow: -1px 1px 2px $black;
-        box-shadow: -1px 1px 2px $black;
-        -webkit-transform: translateY(2px);
-        -ms-transform: translateY(2px);
-        transform: translateY(2px);
-      }
-      &:focus {
-        font-size: 1.35rem;
-      }
-    }
-    .number,
-    .number:hover,
-    .number:active,
-    .number:focus {
-      background: change-color($black, $lightness: 100%);
-      color: change-color($black, $lightness: 20%);
-    }
-    .clear,
-    .clear:hover,
-    .clear:active,
-    .clear:focus {
-      background: $clear-button-color;
-      color: change-color($black, $lightness: 20%);
-    }
-  }
+// Message styles
+.message {
+  border-radius: 5px;
+  line-height: 1.55;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 15px 10px;
 }
 
 .info-message {
@@ -240,3 +122,5 @@ noscript .info-message {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+@import "main";
