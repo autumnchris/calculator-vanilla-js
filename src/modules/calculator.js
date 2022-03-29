@@ -97,8 +97,9 @@ const Calculator = (() => {
       id: '+'
     }
   ];
-  let result = '0';
-  const endsWithOperator = result.charAt(result.length - 1).match(/\s/);
+  let numA = '';
+  let numB = '';
+  let operator = '';
 
   function renderCalcButtons() {
     document.querySelector('.calc-buttons-container').innerHTML = calcButtons.map(button => {
@@ -108,174 +109,119 @@ const Calculator = (() => {
 
   function renderCalculator() {
     document.querySelector('.calculator').innerHTML = `
-    <div class="screen">${result}</div>
+    <div class="screen">0</div>
     <div class="calc-buttons-container"></div>`;
 
     renderCalcButtons();
   }
 
   function selectNumber(number) {
-    result = result.split(' ');
 
-    if (result[result.length - 1] === '0') {
-      result[result.length - 1] = result[result.length - 1].substr(1);
+    if (!operator) {
+      if(numA === '0') numA = '';
+      numA += number;
+      document.querySelector('.screen').innerHTML = numA;
     }
-    result[result.length - 1] += number;
-    document.querySelector('.screen').innerHTML = result[result.length - 1];
-    result = result.join(' ');
+    else {
+      if(numB === '0') numB = '';
+      numB += number;
+      document.querySelector('.screen').innerHTML = numB;
+    }
   }
 
-  function selectOperator(operator) {
-    solveEquation();
-
-    if (endsWithOperator) {
-      result = result.substr(0, result.length - 3);
-    }
-    result += ` ${operator} `;
+  function selectOperator(operatorValue) {
+    if(numB) solveEquation();
+    if(numA) operator = operatorValue;
   }
 
-  function togglePosNeg() {
+  function solveEquation() {
+    const a = Number(numA);
+    const b = Number(numB);
+    let formula;
 
-    if (!endsWithOperator) {
-      result = result.split(' ');
+    if (numB && operator) {
 
-      if (result[result.length - 1] < 0) {
-        result[result.length - 1] = Math.abs(result[result.length - 1]);
+      switch (operator) {
+        case '+':
+          formula = a + b;
+          break;
+        case '-':
+          formula = a - b;
+          break;
+        case '*':
+          formula = a * b;
+          break;
+        case '/':
+          formula = a / b;
       }
-      else if (result[result.length - 1] > 0) {
-        result[result.length - 1] = -result[result.length - 1];
-      }
-      else {
-        result[result.length - 1] = 0;
-      }
-      document.querySelector('.screen').innerHTML = result[result.length - 1];
-      result = result.join(' ');
+      formula = formula.toString();
+      numA = formula;
+      numB = '';
+      operator = '';
+      document.querySelector('.screen').innerHTML = formula;
+    }
+  }
+
+  function selectDecimal() {
+
+    if (numB && !numB.includes('.')) {
+      document.querySelector('.screen').value === '0' ? numB = '0.' : numB += '.';
+      document.querySelector('.screen').innerHTML = numB;
+    }
+    else if (!operator && !numB && !numA.includes('.')) {
+      document.querySelector('.screen').value === '0' ? numA = '0.' : numA += '.';
+      document.querySelector('.screen').innerHTML = numA;
     }
   }
 
   function convertToPercent() {
 
-    if (!endsWithOperator) {
-      result = result.split(' ');
-      result[result.length - 1] /= 100;
-      document.querySelector('.screen').innerHTML = result[result.length - 1];
-      result = result.join(' ');
+    if (numB) {
+      numB /= 100;
+      numB = numB.toString();
+      document.querySelector('.screen').innerHTML = numB;
+    }
+    else if (!operator && !numB) {
+      numA /= 100;
+      numA = numA.toString();
+      document.querySelector('.screen').innerHTML = numA;
+    }
+  }
+
+  function togglePosNeg() {
+
+    if (numB) {
+      numB < 0 ? numB = Math.abs(numB) : numB > 0 ? numB = -numB : numB = 0;
+      numB = numB.toString();
+      document.querySelector('.screen').innerHTML = numB;
+    }
+    else if (!operator && !numB) {
+      numA < 0 ? numA = Math.abs(numA) : numA > 0 ? numA = -numA : numA = 0;
+      numA = numA.toString();
+      document.querySelector('.screen').innerHTML = numA;
     }
   }
 
   function clearEntry() {
 
-    if (!endsWithOperator) {
-      result = result.split(' ');
-      result[result.length - 1] = '0';
-      document.querySelector('.screen').innerHTML = result[result.length - 1];
-      result = result.join(' ');
+    if (operator && numB) {
+      numB = '';
+      document.querySelector('.screen').innerHTML = '0';
+    }
+    else if (!operator) {
+      numA = '';
+      document.querySelector('.screen').innerHTML = '0';
     }
     else {
-      result = result.substr(0, result.length - 3);
+      operator = '';
     }
   }
 
   function clearAll() {
-    result = '0';
-    document.querySelector('.screen').innerHTML = result;
-  }
-
-  function selectDecimal() {
-
-    if (!endsWithOperator) {
-      result = result.split(' ');
-
-      if (!result[result.length - 1].includes('.')){
-        result[result.length - 1] += '.';
-        document.querySelector('.screen').innerHTML = result[result.length - 1];
-      }
-      result = result.join(' ');
-    }
-  }
-
-  function solveEquation() {
-    let a;
-    let b;
-
-    if (result.includes(' ') && !endsWithOperator) {
-      result = result.split(' ');
-      a = Number(result[0]);
-      b = Number(result[2]);
-
-      switch (result[1]) {
-        case '+':
-          result = a + b;
-          break;
-        case '-':
-          result = a - b;
-          break;
-        case '*':
-          result = a * b;
-          break;
-        case '/':
-          result = a / b;
-      }
-      result = result.toString();
-      document.querySelector('.screen').innerHTML = result;
-    }
-  }
-
-  function setKeys(event) {
-    event.preventDefault();
-
-    if (event.shiftKey) {
-      switch (event.keyCode) {
-        // plus sign
-        case 187:
-          selectOperator(event.key);
-          break;
-        // multiplication sign
-        case 56:
-          selectOperator(event.key);
-          break;
-        // percentage
-        case 53:
-          convertToPercent();
-      }
-    }
-    else {
-      if (event.keyCode >= 48 && event.keyCode <= 57) {
-        selectNumber(event.key);
-      }
-      else {
-        switch (event.keyCode) {
-          // minus sign
-          case 189:
-            selectOperator(event.key);
-            break;
-          // division sign
-          case 191:
-            selectOperator(event.key);
-            break;
-          // equal sign
-          case 187:
-            solveEquation();
-            break;
-          // option/alt
-          case 18:
-            togglePosNeg();
-            break;
-          // delete/backspace
-          case 8:
-            clearEntry();
-            break;
-          // escape
-          case 27:
-            clearAll();
-            break;
-          // decimal/period
-          case 190:
-            selectDecimal();
-            break;
-        }
-      }
-    }
+    numA = '';
+    numB = '';
+    operator = '';
+    document.querySelector('.screen').innerHTML = '0';
   }
 
   return {
@@ -287,8 +233,7 @@ const Calculator = (() => {
     clearEntry,
     clearAll,
     selectDecimal,
-    solveEquation,
-    setKeys
+    solveEquation
   };
 })();
 

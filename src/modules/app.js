@@ -25,10 +25,6 @@ const App = (() => {
        element.matches('#decimal') ? Calculator.selectDecimal() : null;
        element.matches('#equals') ? Calculator.solveEquation() : null;
     });
-
-    document.addEventListener('keydown', event => {
-      Calculator.setKeys(event);
-    });
   }
 
   return {
