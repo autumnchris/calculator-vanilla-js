@@ -97,7 +97,8 @@ const Calculator = (() => {
       id: '+'
     }
   ];
-  let numA = '';
+  let screenValue = '0';
+  let numA = '0';
   let numB = '';
   let operator = '';
 
@@ -117,21 +118,29 @@ const Calculator = (() => {
 
   function selectNumber(number) {
 
-    if (!operator) {
-      if(numA === '0') numA = '';
-      numA += number;
-      document.querySelector('.screen').innerHTML = numA;
-    }
-    else {
-      if(numB === '0') numB = '';
-      numB += number;
-      document.querySelector('.screen').innerHTML = numB;
+    if (!checkIfError()) {
+
+      if (!operator) {
+        if(numA === '0') numA = '';
+        numA += number;
+        screenValue = numA;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
+      else {
+        if(numB === '0') numB = '';
+        numB += number;
+        screenValue = numB;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
     }
   }
 
   function selectOperator(operatorValue) {
-    if(numB) solveEquation();
-    if(numA) operator = operatorValue;
+
+    if (!checkIfError()) {
+      if(numB) solveEquation();
+      operator = operatorValue;
+    }
   }
 
   function solveEquation() {
@@ -141,76 +150,103 @@ const Calculator = (() => {
 
     if (numB && operator) {
 
-      switch (operator) {
-        case '+':
-          formula = a + b;
-          break;
-        case '-':
-          formula = a - b;
-          break;
-        case '*':
-          formula = a * b;
-          break;
-        case '/':
-          formula = a / b;
+      if (operator === '/' && numB === '0') {
+        numA = '';
+        numB = '';
+        operator = '';
+        screenValue = 'ERROR';
+        document.querySelector('.screen').innerHTML = screenValue;
       }
-      formula = formula.toString();
-      numA = formula;
-      numB = '';
-      operator = '';
-      document.querySelector('.screen').innerHTML = formula;
+      else {
+        switch (operator) {
+          case '+':
+            formula = a + b;
+            break;
+          case '-':
+            formula = a - b;
+            break;
+          case '*':
+            formula = a * b;
+            break;
+          case '/':
+            formula = a / b;
+        }
+        formula = formula.toString();
+        numA = formula;
+        numB = '';
+        operator = '';
+        screenValue = formula;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
     }
   }
 
   function selectDecimal() {
 
-    if (numB && !numB.includes('.')) {
-      document.querySelector('.screen').value === '0' ? numB = '0.' : numB += '.';
-      document.querySelector('.screen').innerHTML = numB;
-    }
-    else if (!operator && !numB && !numA.includes('.')) {
-      document.querySelector('.screen').value === '0' ? numA = '0.' : numA += '.';
-      document.querySelector('.screen').innerHTML = numA;
+    if (!checkIfError()) {
+
+      if (operator && !numB.includes('.')) {
+        numB === '0' || numB === '' ? numB = '0.' : numB += '.';
+        screenValue = numB;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
+      else if (checkIfOnNumA() && !numA.includes('.')) {
+        numA === '0' || numA === '' ? numA = '0.' : numA += '.';
+        screenValue = numA;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
     }
   }
 
   function convertToPercent() {
 
-    if (numB) {
-      numB /= 100;
-      numB = numB.toString();
-      document.querySelector('.screen').innerHTML = numB;
-    }
-    else if (!operator && !numB) {
-      numA /= 100;
-      numA = numA.toString();
-      document.querySelector('.screen').innerHTML = numA;
+    if (!checkIfError()) {
+
+      if (checkIfOnNumB()) {
+        numB /= 100;
+        numB = numB.toString();
+        screenValue = numB;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
+      else if (checkIfOnNumA()) {
+        numA /= 100;
+        numA = numA.toString();
+        screenValue = numA;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
     }
   }
 
   function togglePosNeg() {
 
-    if (numB) {
-      numB < 0 ? numB = Math.abs(numB) : numB > 0 ? numB = -numB : numB = 0;
-      numB = numB.toString();
-      document.querySelector('.screen').innerHTML = numB;
-    }
-    else if (!operator && !numB) {
-      numA < 0 ? numA = Math.abs(numA) : numA > 0 ? numA = -numA : numA = 0;
-      numA = numA.toString();
-      document.querySelector('.screen').innerHTML = numA;
+    if (!checkIfError()) {
+
+      if (checkIfOnNumB()) {
+        numB < 0 ? numB = Math.abs(numB) : numB > 0 ? numB = -numB : numB = 0;
+        numB = numB.toString();
+        screenValue = numB;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
+      else if (checkIfOnNumA()) {
+        numA < 0 ? numA = Math.abs(numA) : numA > 0 ? numA = -numA : numA = 0;
+        numA = numA.toString();
+        screenValue = numA;
+        document.querySelector('.screen').innerHTML = screenValue;
+      }
     }
   }
 
   function clearEntry() {
 
     if (operator && numB) {
-      numB = '';
-      document.querySelector('.screen').innerHTML = '0';
+      numB = '0';
+      screenValue = '0';
+      document.querySelector('.screen').innerHTML = screenValue;
     }
     else if (!operator) {
-      numA = '';
-      document.querySelector('.screen').innerHTML = '0';
+      numA = '0';
+      screenValue = '0';
+      document.querySelector('.screen').innerHTML = screenValue;
     }
     else {
       operator = '';
@@ -218,10 +254,23 @@ const Calculator = (() => {
   }
 
   function clearAll() {
-    numA = '';
+    numA = '0';
     numB = '';
     operator = '';
-    document.querySelector('.screen').innerHTML = '0';
+    screenValue = '0';
+    document.querySelector('.screen').innerHTML = screenValue;
+  }
+
+  function checkIfError() {
+    return screenValue === 'ERROR' ? true : false;
+  }
+
+  function checkIfOnNumA() {
+    return !numB && !operator ? true : false;
+  }
+
+  function checkIfOnNumB() {
+    return numB ? true : false;
   }
 
   return {
