@@ -16,14 +16,8 @@ const App = (() => {
 
     document.addEventListener('click', event => {
        const element = event.target;
-       element.matches('.number') ? Calculator.selectNumber(element.id) : null;
-       element.matches('.operator') ? Calculator.selectOperator(element.id) : null;
-       element.matches('#pos-neg') ? Calculator.togglePosNeg() : null;
-       element.matches('#percentage') ? Calculator.convertToPercent() : null;
-       element.matches('#clear-entry') ? Calculator.clearEntry() : null;
-       element.matches('#clear-all') ? Calculator.clearAll() : null;
-       element.matches('#decimal') ? Calculator.selectDecimal() : null;
-       element.matches('#equals') ? Calculator.solveEquation() : null;
+       console.log(event);
+       element.matches('.calc-button') ? Calculator.handleClick(element.dataset.type, element.dataset.value) : null;
     });
   }
 

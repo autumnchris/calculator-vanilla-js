@@ -1,102 +1,6 @@
-const Calculator = (() => {
-  const calcButtons = [
-    {
-      value: '+/-',
-      id: 'pos-neg'
-    },
-    {
-      value: '%',
-      id: 'percentage'
-    },
-    {
-      value: 'CE',
-      className: 'clear',
-      id: 'clear-entry'
-    },
-    {
-      value: 'AC',
-      className: 'clear',
-      id: 'clear-all'
-    },
-    {
-      value: '7',
-      className: 'number',
-      id: '7'
-    },
-    {
-      value: '8',
-      className: 'number',
-      id: '8'
-    },
-    {
-      value: '9',
-      className: 'number',
-      id: '9'
-    },
-    {
-      value: '&divide;',
-      className: 'operator',
-      id: '/'
-    },
-    {
-      value: '4',
-      className: 'number',
-      id: '4'
-    },
-    {
-      value: '5',
-      className: 'number',
-      id: '5'
-    },
-    {
-      value: '6',
-      className: 'number',
-      id: '6'
-    },
-    {
-      value: '&times;',
-      className: 'operator',
-      id: '*'
-    },
-    {
-      value: '1',
-      className: 'number',
-      id: '1'
-    },
-    {
-      value: '2',
-      className: 'number',
-      id: '2'
-    },
-    {
-      value: '3',
-      className: 'number',
-      id: '3'
-    },
-    {
-      value: '-',
-      className: 'operator',
-      id: '-'
-    },
-    {
-      value: '0',
-      className: 'number',
-      id: '0'
-    },
-    {
-      value: '.',
-      id: 'decimal'
-    },
-    {
-      value: '=',
-      id: 'equals'
-    },
-    {
-      value: '+',
-      className : 'operator',
-      id: '+'
-    }
-  ];
+import calcButtons from "../data/calc-buttons";
+
+const Calculator = (() => {  
   let screenValue = '0';
   let numA = '0';
   let numB = '';
@@ -104,7 +8,7 @@ const Calculator = (() => {
 
   function renderCalcButtons() {
     document.querySelector('.calc-buttons-container').innerHTML = calcButtons.map(button => {
-      return `<button type="button" class="button calc-button${typeof button.className !== 'undefined' ? ' ' + button.className : ''}" id="${button.id}">${button.value}</button>`;
+      return `<button type="button" class="button calc-button${typeof button.className !== 'undefined' ? ' ' + button.className : ''}" data-type=${button.type} data-value=${button.value}>${button.value}</button>`;
     }).join('');
   }
 
@@ -114,6 +18,40 @@ const Calculator = (() => {
     <div class="calc-buttons-container"></div>`;
 
     renderCalcButtons();
+  }
+
+  function handleClick(type, value) {
+    console.log({
+      type,
+      value
+    })
+
+    switch (type) {
+      case 'number':
+        selectNumber(value);
+        break;
+      case 'operator':
+        selectOperator(value);
+        break;
+      case 'pos/neg':
+        togglePosNeg();
+        break;
+      case 'percent':
+        convertToPercent();
+        break;
+      case 'clear':
+        clearEntry();
+        break;
+      case 'clear all':
+        clearAll();
+        break;
+      case 'decimal':
+        selectDecimal();
+        break;
+      case 'equals':
+        solveEquation();
+        break;
+    }
   }
 
   function selectNumber(number) {
@@ -150,7 +88,7 @@ const Calculator = (() => {
 
     if (numB && operator) {
 
-      if (operator === '/' && numB === '0') {
+      if (operator === '&divide;' && numB === '0') {
         numA = '';
         numB = '';
         operator = '';
@@ -165,10 +103,10 @@ const Calculator = (() => {
           case '-':
             formula = a - b;
             break;
-          case '*':
+          case '&times;':
             formula = a * b;
             break;
-          case '/':
+          case '&divide;':
             formula = a / b;
         }
         formula = formula.toString();
@@ -275,14 +213,7 @@ const Calculator = (() => {
 
   return {
     renderCalculator,
-    selectNumber,
-    selectOperator,
-    togglePosNeg,
-    convertToPercent,
-    clearEntry,
-    clearAll,
-    selectDecimal,
-    solveEquation
+    handleClick
   };
 })();
 
