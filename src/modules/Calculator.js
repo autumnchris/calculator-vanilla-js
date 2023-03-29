@@ -8,7 +8,7 @@ const Calculator = (() => {
 
   function renderCalcButtons() {
     document.querySelector('.calc-buttons-container').innerHTML = calcButtons.map(button => {
-      return `<button type="button" class="button calc-button${typeof button.className !== 'undefined' ? ' ' + button.className : ''}" data-type=${button.type} data-value=${button.value}>${button.value}</button>`;
+      return `<button type="button" class="button calc-button${typeof button.className !== 'undefined' ? ' ' + button.className : ''}" data-type=${button.type} data-value=${button.value}>${button.value === '/' ? '&divide;' : button.value === '*' ? '&times;' : button.value}</button>`;
     }).join('');
   }
 
@@ -21,10 +21,6 @@ const Calculator = (() => {
   }
 
   function handleClick(type, value) {
-    console.log({
-      type,
-      value
-    })
 
     switch (type) {
       case 'number':
@@ -88,7 +84,7 @@ const Calculator = (() => {
 
     if (numB && operator) {
 
-      if (operator === '&divide;' && numB === '0') {
+      if (operator === '/' && numB === '0') {
         numA = '';
         numB = '';
         operator = '';
@@ -103,10 +99,10 @@ const Calculator = (() => {
           case '-':
             formula = a - b;
             break;
-          case '&times;':
+          case '*':
             formula = a * b;
             break;
-          case '&divide;':
+          case '/':
             formula = a / b;
         }
         formula = formula.toString();

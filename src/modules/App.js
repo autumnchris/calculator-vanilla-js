@@ -16,7 +16,6 @@ const App = (() => {
 
     document.addEventListener('click', event => {
        const element = event.target;
-       console.log(event);
        element.matches('.calc-button') ? Calculator.handleClick(element.dataset.type, element.dataset.value) : null;
     });
   }

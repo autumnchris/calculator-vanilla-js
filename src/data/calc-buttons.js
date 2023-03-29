@@ -41,7 +41,7 @@ const calcButtons = [
   },
   {
     id: 10,
-    value: '&divide;',
+    value: '/',
     className: 'operator',
     type: 'operator'
   },
@@ -65,7 +65,7 @@ const calcButtons = [
   },
   {
     id: 14,
-    value: '&times;',
+    value: '*',
     className: 'operator',
     type: 'operator'
   },
