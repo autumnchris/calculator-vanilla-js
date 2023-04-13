@@ -1,98 +1,86 @@
-import calcButtons from "../data/calc-buttons";
+import calcButtons from '../data/calc-buttons';
 
-const Calculator = (() => {  
-  let screenValue = '0';
-  let numA = '0';
-  let numB = '';
-  let operator = '';
-
-  function renderCalcButtons() {
-    document.querySelector('.calc-buttons-container').innerHTML = calcButtons.map(button => {
-      return `<button type="button" class="button calc-button${typeof button.className !== 'undefined' ? ' ' + button.className : ''}" data-type=${button.type} data-value=${button.value}>${button.value === '/' ? '&divide;' : button.value === '*' ? '&times;' : button.value}</button>`;
-    }).join('');
+class Calculator {
+  constructor() {
+    this.calcButtons = calcButtons;
+    this.screenValue = '0';
+    this.numA = '0';
+    this.numB = '';
+    this.operator = '';
   }
 
-  function renderCalculator() {
-    document.querySelector('.calculator').innerHTML = `
-    <div class="screen">0</div>
-    <div class="calc-buttons-container"></div>`;
-
-    renderCalcButtons();
-  }
-
-  function handleClick(type, value) {
+  handleClick(type, value) {
 
     switch (type) {
       case 'number':
-        selectNumber(value);
+        this.selectNumber(value);
         break;
       case 'operator':
-        selectOperator(value);
+        this.selectOperator(value);
         break;
       case 'pos/neg':
-        togglePosNeg();
+        this.togglePosNeg();
         break;
       case 'percent':
-        convertToPercent();
+        this.convertToPercent();
         break;
       case 'clear':
-        clearEntry();
+        this.clearEntry();
         break;
       case 'clear all':
-        clearAll();
+        this.clearAll();
         break;
       case 'decimal':
-        selectDecimal();
+        this.selectDecimal();
         break;
       case 'equals':
-        solveEquation();
+        this.solveEquation();
         break;
     }
   }
 
-  function selectNumber(number) {
+  selectNumber(number) {
 
-    if (!checkIfError()) {
+    if (!this.checkIfError()) {
 
-      if (!operator) {
-        if(numA === '0') numA = '';
-        numA += number;
-        screenValue = numA;
-        document.querySelector('.screen').innerHTML = screenValue;
+      if (!this.operator) {
+        if(this.numA === '0') this.numA = '';
+        this.numA += number;
+        this.screenValue = this.numA;
       }
       else {
-        if(numB === '0') numB = '';
-        numB += number;
-        screenValue = numB;
-        document.querySelector('.screen').innerHTML = screenValue;
+        if(this.numB === '0') this.numB = '';
+        this.numB += number;
+        this.screenValue = this.numB;
       }
+      this.changeScreenValue(this.screenValue);
     }
   }
 
-  function selectOperator(operatorValue) {
+  selectOperator(operatorValue) {
 
-    if (!checkIfError()) {
-      if(numB) solveEquation();
-      operator = operatorValue;
+    if (!this.checkIfError()) {
+      if(this.numB) this.solveEquation();
+      this.operator = operatorValue;
     }
   }
 
-  function solveEquation() {
-    const a = Number(numA);
-    const b = Number(numB);
+  solveEquation() {
+    const a = Number(this.numA);
+    const b = Number(this.numB);
     let formula;
 
-    if (numB && operator) {
+    if (this.numB && this.operator) {
 
-      if (operator === '/' && numB === '0') {
-        numA = '';
-        numB = '';
-        operator = '';
-        screenValue = 'ERROR';
-        document.querySelector('.screen').innerHTML = screenValue;
+      if (this.operator === '/' && this.numB === '0') {
+        this.numA = '';
+        this.numB = '';
+        this.operator = '';
+        this.screenValue = 'ERROR';
       }
       else {
-        switch (operator) {
+
+        switch (this.operator) {
           case '+':
             formula = a + b;
             break;
@@ -106,111 +94,126 @@ const Calculator = (() => {
             formula = a / b;
         }
         formula = formula.toString();
-        numA = formula;
-        numB = '';
-        operator = '';
-        screenValue = formula;
-        document.querySelector('.screen').innerHTML = screenValue;
+        this.numA = formula;
+        this.numB = '';
+        this.operator = '';
+        this.screenValue = formula;
       }
+      this.changeScreenValue(this.screenValue);
     }
   }
 
-  function selectDecimal() {
+  selectDecimal() {
 
-    if (!checkIfError()) {
+    if (!this.checkIfError()) {
 
-      if (operator && !numB.includes('.')) {
-        numB === '0' || numB === '' ? numB = '0.' : numB += '.';
-        screenValue = numB;
-        document.querySelector('.screen').innerHTML = screenValue;
+      if (this.operator && !this.numB.includes('.')) {
+        this.numB === '0' || this.numB === '' ? this.numB = '0.' : this.numB += '.';
+        this.screenValue = this.numB;
       }
-      else if (checkIfOnNumA() && !numA.includes('.')) {
-        numA === '0' || numA === '' ? numA = '0.' : numA += '.';
-        screenValue = numA;
-        document.querySelector('.screen').innerHTML = screenValue;
+      else if (this.checkIfOnNumA() && !this.numA.includes('.')) {
+        this.numA === '0' || this.numA === '' ? this.numA = '0.' : this.numA += '.';
+        this.screenValue = this.numA;
       }
+      this.changeScreenValue(this.screenValue);
     }
   }
 
-  function convertToPercent() {
+  convertToPercent() {
 
-    if (!checkIfError()) {
+    if (!this.checkIfError()) {
 
-      if (checkIfOnNumB()) {
-        numB /= 100;
-        numB = numB.toString();
-        screenValue = numB;
-        document.querySelector('.screen').innerHTML = screenValue;
+      if (this.checkIfOnNumB()) {
+        this.numB /= 100;
+        this.numB = this.numB.toString();
+        this.screenValue = this.numB;
       }
-      else if (checkIfOnNumA()) {
-        numA /= 100;
-        numA = numA.toString();
-        screenValue = numA;
-        document.querySelector('.screen').innerHTML = screenValue;
+      else if (this.checkIfOnNumA()) {
+        this.numA /= 100;
+        this.numA = this.numA.toString();
+        this.screenValue = this.numA;
       }
+      this.changeScreenValue(this.screenValue);
     }
   }
 
-  function togglePosNeg() {
+  togglePosNeg() {
 
-    if (!checkIfError()) {
+    if (!this.checkIfError()) {
 
-      if (checkIfOnNumB()) {
-        numB < 0 ? numB = Math.abs(numB) : numB > 0 ? numB = -numB : numB = 0;
-        numB = numB.toString();
-        screenValue = numB;
-        document.querySelector('.screen').innerHTML = screenValue;
+      if (this.checkIfOnNumB()) {
+        this.numB < 0 ? this.numB = Math.abs(this.numB) : this.numB > 0 ? this.numB = -this.numB : this.numB = 0;
+        this.numB = this.numB.toString();
+        this.screenValue = this.numB;
       }
-      else if (checkIfOnNumA()) {
-        numA < 0 ? numA = Math.abs(numA) : numA > 0 ? numA = -numA : numA = 0;
-        numA = numA.toString();
-        screenValue = numA;
-        document.querySelector('.screen').innerHTML = screenValue;
+      else if (this.checkIfOnNumA()) {
+        this.numA < 0 ? this.numA = Math.abs(this.numA) : this.numA > 0 ? this.numA = -this.numA : this.numA = 0;
+        this.numA = this.numA.toString();
+        this.screenValue = this.numA;
       }
+      this.changeScreenValue(this.screenValue);
     }
   }
 
-  function clearEntry() {
+  clearEntry() {
 
-    if (operator && numB) {
-      numB = '0';
-      screenValue = '0';
-      document.querySelector('.screen').innerHTML = screenValue;
+    if (this.operator && this.numB) {
+      this.numB = '0';
+      this.screenValue = '0';
+      this.changeScreenValue(this.screenValue);
     }
-    else if (!operator) {
-      numA = '0';
-      screenValue = '0';
-      document.querySelector('.screen').innerHTML = screenValue;
+    else if (!this.operator) {
+      this.numA = '0';
+      this.screenValue = '0';
+      this.changeScreenValue(this.screenValue);
     }
     else {
-      operator = '';
+      this.operator = '';
     }
   }
 
-  function clearAll() {
-    numA = '0';
-    numB = '';
-    operator = '';
-    screenValue = '0';
-    document.querySelector('.screen').innerHTML = screenValue;
+  clearAll() {
+    this.numA = '0';
+    this.numB = '';
+    this.operator = '';
+    this.screenValue = '0';
+    this.changeScreenValue(this.screenValue);
   }
 
-  function checkIfError() {
-    return screenValue === 'ERROR' ? true : false;
+  checkIfError() {
+    return this.screenValue === 'ERROR' ? true : false;
   }
 
-  function checkIfOnNumA() {
-    return !numB && !operator ? true : false;
+  checkIfOnNumA() {
+    return !this.numB && !this.operator ? true : false;
   }
 
-  function checkIfOnNumB() {
-    return numB ? true : false;
+  checkIfOnNumB() {
+    return this.numB ? true : false;
   }
 
-  return {
-    renderCalculator,
-    handleClick
-  };
-})();
+  // DOM methods
+  changeScreenValue(value) {
+    document.querySelector('.screen').innerHTML = value;
+  }
 
-export { Calculator };
+  renderCalcButtons() {
+    const calcButtonsContainer = document.querySelector('.calc-buttons-container');
+    calcButtonsContainer.innerHTML = this.calcButtons.map(calcButton => {
+      return `<button type="button" class="button calc-button${typeof calcButton.className !== 'undefined' ? ' ' + calcButton.className : ''}" data-type=${calcButton.type} data-value=${calcButton.value}>${calcButton.value === '/' ? '&divide;' : calcButton.value === '*' ? '&times;' : calcButton.value}</button>`;
+    }).join('');
+  }
+
+  renderCalculator(location) {
+    const calculator = document.createElement('div');
+    calculator.classList.add('calculator');
+    calculator.innerHTML = `
+      <div class="screen">${this.screenValue}</div>
+      <div class="calc-buttons-container"></div>
+    `;
+    document.querySelector(location).appendChild(calculator);
+    this.renderCalcButtons();
+  }
+}
+
+export default Calculator;
