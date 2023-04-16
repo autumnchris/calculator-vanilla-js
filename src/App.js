@@ -1,6 +1,6 @@
-import Header from "./modules/Header";
-import Footer from "./modules/Footer";
-import Calculator from "./modules/Calculator";
+import Header from './modules/Header';
+import Footer from './modules/Footer';
+import Calculator from './modules/Calculator';
 
 class App {
   constructor() {
