@@ -2,7 +2,6 @@ import calcButtons from '../data/calc-buttons';
 
 class Calculator {
   constructor() {
-    this.calcButtons = calcButtons;
     this.screenValue = '0';
     this.numA = '0';
     this.numB = '';
@@ -199,7 +198,7 @@ class Calculator {
 
   renderCalcButtons() {
     const calcButtonsContainer = document.querySelector('.calc-buttons-container');
-    calcButtonsContainer.innerHTML = this.calcButtons.map(calcButton => {
+    calcButtonsContainer.innerHTML = calcButtons.map(calcButton => {
       return `<button type="button" class="button calc-button${typeof calcButton.className !== 'undefined' ? ' ' + calcButton.className : ''}" data-type=${calcButton.type} data-value=${calcButton.value}>${calcButton.value === '/' ? '&divide;' : calcButton.value === '*' ? '&times;' : calcButton.value}</button>`;
     }).join('');
   }
