@@ -7,11 +7,14 @@ Inspired by both the [Build a JavaScript Calculator challenge](https://learn.fre
 ---
 
 ## Built With
+* Vanilla JS
 * JavaScript
 * [Sass](http://sass-lang.com)
+* CSS3
+* HTML5
+* [Node.js](https://nodejs.org/en)
 * [Webpack](https://webpack.js.org)
 * [Babel](https://babeljs.io)
-* HTML5
 * [Normalize.css](https://necolas.github.io/normalize.css)
 * [Digital 7 font](https://www.dafont.com/digital-7.font)
 * [Google Fonts](https://fonts.google.com)
