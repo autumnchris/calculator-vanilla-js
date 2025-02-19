@@ -1,4 +1,9 @@
 @font-face {
+  font-family: "Oxygen Mono";
+  src: url(../assets/fonts/OxygenMono-Regular.ttf);
+}
+
+@font-face {
   font-family: "digital 7 italic";
   src: url(../assets/fonts/digital-7-italic.ttf);
 }
@@ -55,6 +60,7 @@ html {
     h1 {
       font-family: $monospace-font;
       font-size: 1.5rem;
+      font-weight: 400;
       letter-spacing: 12px;
       text-transform: lowercase;
     }
@@ -89,7 +95,6 @@ textarea:focus,
   h1 {
     font-family: inherit;
     font-size: 1.9rem;
-    font-weight: 400;
     letter-spacing: 4px;
     text-transform: initial;
   }

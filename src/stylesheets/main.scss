@@ -12,10 +12,8 @@
   cursor: pointer;
   line-height: normal;
   padding: 0;
+  text-decoration: none;
   width: auto;
-  &:hover {
-    text-decoration: none;
-  }
 }
 
 // Calculator styles
